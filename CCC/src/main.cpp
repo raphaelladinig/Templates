@@ -2,50 +2,42 @@
 
 using namespace std;
 
-const int level = 0;
-const int tasksNr = 0;
-const string filename = "level" + to_string(level) + "_";
+const int curLevel = 0;
+const int tasks = 0;
+string filename;
+void writeOutput(string input);
 
-string code();
-string processInput(int taskNr);
-void writeOutput(int taskNr, string input);
+//---------------------------------------------------------------------------------------------------------------------------
+
+string solve() {
+    ifstream inputFile("in/" + filename + ".in");
+    string result = "";
+
+    if (inputFile.is_open()) {
+
+        inputFile.close();
+    }
+
+    return result;
+}
+
+//---------------------------------------------------------------------------------------------------------------------------
 
 int main() {
-    for (int taskNr = 1; taskNr <= tasksNr; taskNr++) {
+    for (int curTask = 1; curTask <= tasks; curTask++) {
         try {
-            writeOutput(taskNr, processInput(taskNr));
+            filename = "level" + to_string(curLevel) + "_" + to_string(curTask);
+            writeOutput(solve());
             cout << "SUCCESS\n";
-        } catch (const exception& e) {
+        } catch (const exception &e) {
             cout << "ERROR: " << e.what() << "\n";
         }
     }
     return 0;
 }
 
-string code() { // Pass Variables
-    string result = "";
-
-    // Logic
-
-    return result;
-}
-
-string processInput(int taskNr) {
-    ifstream inputFile("in/" + filename + to_string(taskNr) + ".in");
-
-    // Variables
-
-    if (inputFile.is_open()) {
-        // Fill Variables
-
-        inputFile.close();
-    }
-
-    return code();
-}
-
-void writeOutput(int taskNr, string input) {
-    ofstream outputFile("out/" + filename + to_string(taskNr) + ".out");
+void writeOutput(string input) {
+    ofstream outputFile("out/" + filename + ".out");
 
     if (outputFile.is_open()) {
         outputFile << input;
