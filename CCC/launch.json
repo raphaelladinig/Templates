@@ -1,10 +1,9 @@
 {
-  "version": "0.2.0",
   "configurations": [
     {
       "type": "codelldb",
       "request": "launch",
-      "name": "launch.json",
+      "name": "main",
       "program": "${workspaceFolder}/main"
     }
   ]
