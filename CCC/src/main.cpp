@@ -1,15 +1,14 @@
-#include <bits/stdc++.h>
+#include <fstream>
+#include <iostream>
 
 using namespace std;
 
 const int level = 0;
 const int tasks[1] = {0};
-string filename;
-void writeOutput(string input);
 
 //---------------------------------------------------------------------------------------------------------------------------
 
-string solve() {
+string solve(string filename) {
     ifstream inputFile("in/" + filename + ".in");
     string result = "";
 
@@ -24,10 +23,14 @@ string solve() {
 //---------------------------------------------------------------------------------------------------------------------------
 
 int main() {
-    for (int tasks : tasks) {
+    for (int task : tasks) {
         try {
-            filename = "level" + to_string(level) + "_" + to_string(tasks);
-            writeOutput(solve());
+            string filename = "level" + to_string(level) + "_" + to_string(task);
+            ofstream outputFile("out/" + filename + ".out");
+            if (outputFile.is_open()) {
+                outputFile << solve(filename);
+            }
+            outputFile.close();
             cout << "SUCCESS\n";
         } catch (const exception &e) {
             cout << "ERROR: " << e.what() << "\n";
@@ -35,13 +38,4 @@ int main() {
     }
 
     return 0;
-}
-
-void writeOutput(string input) {
-    ofstream outputFile("out/" + filename + ".out");
-
-    if (outputFile.is_open()) {
-        outputFile << input;
-    }
-    outputFile.close();
 }
