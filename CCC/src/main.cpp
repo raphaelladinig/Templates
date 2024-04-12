@@ -15,6 +15,8 @@ string solve(string filename) {
     if (inputFile.is_open()) {
 
         inputFile.close();
+    } else {
+        throw runtime_error("Could not open input file");
     }
 
     return result;
@@ -30,7 +32,9 @@ int main() {
             ofstream outputFile("out/" + filename + ".out");
             if (outputFile.is_open()) {
                 outputFile << solve(filename);
-            }
+            } else {
+                throw runtime_error("Could not open output file");
+            } 
             outputFile.close();
             cout << "SUCCESS\n";
         } catch (const exception &e) {
