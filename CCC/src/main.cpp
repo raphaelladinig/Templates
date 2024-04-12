@@ -4,7 +4,7 @@
 using namespace std;
 
 const int level = 0;
-const int tasks[1] = {0};
+const int tasks[] = {0};
 
 //---------------------------------------------------------------------------------------------------------------------------
 
@@ -25,7 +25,8 @@ string solve(string filename) {
 int main() {
     for (int task : tasks) {
         try {
-            string filename = "level" + to_string(level) + "_" + to_string(task);
+            string filename =
+                "level" + to_string(level) + "_" + to_string(task);
             ofstream outputFile("out/" + filename + ".out");
             if (outputFile.is_open()) {
                 outputFile << solve(filename);
