@@ -34,7 +34,7 @@ int main() {
                 outputFile << solve(filename);
             } else {
                 throw runtime_error("Could not open output file");
-            } 
+            }
             outputFile.close();
             cout << "SUCCESS\n";
         } catch (const exception &e) {
